@@ -21,4 +21,4 @@ repositório de terceiros). Para usar as simulações em Java e JavaScript, colo
 | 15 | `R 3 (1).wav` |
 
 Essa correspondência é uma **suposição**: o firmware só guarda o número da faixa. Ela foi deduzida a partir da ordem
-dos arquivos no `FlautaVirtual.pde`. As faixas 11 e 16 não têm arquivo associado.
+dos arquivos no `FlautaVirtual.pde` (programa que fica em outro repositório). As faixas 11 e 16 não têm arquivo associado.

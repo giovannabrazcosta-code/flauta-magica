@@ -67,7 +67,7 @@ extraídas as pastas do usuário, e delas veio o código do servidor. O cartão 
 | Peça | O que se sabe | Estado |
 |---|---|---|
 | ESP32 | Cliente WebSocket para `10.0.0.118`, compilado com PlatformIO; sem strings de DFPlayer | Papel **em aberto** |
-| Flauta Virtual (Processing) | 7 botões circulares que tocam 14 sons | Ligação com os 7 sensores **inferida**, não confirmada |
+| Flauta Virtual (Processing), que fica em outro repositório | 7 botões circulares que tocam 14 sons | Ligação com os 7 sensores **inferida**, não confirmada |
 
 ## 4. Parentesco entre as gerações — inferido
 

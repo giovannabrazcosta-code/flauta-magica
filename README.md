@@ -13,7 +13,6 @@ Código recuperado e reconstruído do kit **Flauta Mágica**: uma flauta com sen
 | `arduino/FlautaMagica_reconstruido/` | A lógica do firmware reescrita em C++ (ainda não compilado) | Reconstrução |
 | `arduino/simulacao-javascript/` e `arduino/simulacao-java/` | A mesma lógica, para rodar no computador | Reconstrução |
 | `raspberry-pi/` | Servidor WebSocket em Node.js | Original, de terceiros (ver Créditos) |
-| `FlautaVirtual/` | Flauta Virtual (Processing): 7 botões que tocam sons | Original, origem a confirmar |
 | `docs/arquitetura.md` | Como as peças se conectam, com diagramas | |
 | `docs/nodemcu-e-esp32.md` | O que se sabe dos firmwares do NodeMCU e do ESP32 (sem código) | |
 
@@ -29,7 +28,6 @@ Lê 4 sensores. A combinação escolhe a família de som (melódica, harmônica 
 | C++ do Arduino | Abrir o `.ino` no Arduino IDE (bibliotecas: Adafruit NeoPixel e DFRobotDFPlayerMini) |
 | Simulação em Java | Abrir o `.pde` no Processing 4 (biblioteca Sound) |
 | Simulação em JavaScript | Abrir `arduino/simulacao-javascript/index.html` no Chrome ou Edge e clicar em "Iniciar" |
-| Flauta Virtual | Abrir `FlautaVirtual/FlautaVirtual.pde` no Processing 4 (biblioteca Sound) |
 | Servidor do Raspberry Pi | `cd raspberry-pi && npm install && node index.js` (ou `node servidor-somente-websocket.js`, que só precisa do pacote `websocket`) |
 
 > **Aviso:** não grave nenhum sketch nas placas originais. Cada upload sobrescreve a flash e destrói o que ela guarda.
@@ -37,7 +35,7 @@ Lê 4 sensores. A combinação escolhe a família de som (melódica, harmônica 
 ## Sons
 
 Os `.wav` **não estão no repositório**. A lista dos 14 arquivos usados está em [`arduino/data/LEIA-ME.md`](arduino/data/LEIA-ME.md).
-Para as simulações, coloque-os em `arduino/data/`; para a Flauta Virtual, coloque os mesmos em `FlautaVirtual/data/`.
+Para as simulações, coloque-os em `arduino/data/`.
 
 ## Exato × suposição
 
@@ -72,4 +70,3 @@ de origem ou peça autorização.
 - Compilar o `.ino` reconstruído e comparar o tamanho com o dump original (~16 KB).
 - Papel do ESP32 no kit.
 - Texto exato que o NodeMCU envia ao servidor (ver `docs/arquitetura.md`).
-- Se os 7 botões da Flauta Virtual correspondem aos 7 sensores do NodeMCU.
