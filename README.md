@@ -62,8 +62,10 @@ dados pessoais gravados dentro, e ficam guardados fora do repositório (ver `.gi
 
 ## Licença
 
-**Não definida.** O servidor e os sons são de terceiros. Antes de tornar o repositório público, confirme a licença do repositório
-de origem ou peça autorização.
+Este repositório **não define uma licença**, de propósito: ele reúne partes do mesmo projeto Flauta Mágica. Sem licença,
+vale o direito autoral padrão: o código pode ser lido, mas não reutilizado nem redistribuído sem autorização dos autores.
+
+O servidor do Raspberry Pi e os sons são de **Christy386**, e são usados aqui com a autorização dele.
 
 ## Em aberto
 
