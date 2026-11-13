@@ -1,0 +1,17 @@
+# Sons: arquivos grandes (ver arduino-uno/data/LEIA-ME.md e flauta-virtual-processing/FlautaVirtual/data/LEIA-ME.md)
+*.wav
+
+# Dumps brutos das placas e imagem do cartao SD do Raspberry Pi.
+# Contem senha de Wi-Fi e dados pessoais gravados pelo compilador. Nao publicar.
+*.bin
+*.img
+
+# Dependencias do Node (reinstale com "npm install")
+node_modules/
+
+# Perfis de aplicativos copiados do Raspberry Pi (navegador, editor)
+.config/
+
+# Sistema / editores
+Thumbs.db
+.DS_Store

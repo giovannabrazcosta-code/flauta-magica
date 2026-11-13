@@ -1,0 +1,2 @@
+# Preserva os bytes exatos dos dumps (o SHA-256 documentado depende disso)
+*.hex -text

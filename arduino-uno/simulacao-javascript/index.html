@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flauta Mágica - simulação do firmware</title>
+<style>
+  body { margin: 0; background: #101218; color: #f0f0f0; font-family: sans-serif; }
+  #palco { position: relative; max-width: 1000px; margin: 0 auto; }
+  canvas { display: block; width: 100%; height: auto; }
+  #iniciar {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    padding: 14px 34px; font-size: 20px; border: 0; border-radius: 10px;
+    background: #465a8c; color: #f0f0f0; cursor: pointer;
+  }
+  #iniciar:hover { background: #5870b0; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <canvas id="tela" width="1000" height="620"></canvas>
+  <button id="iniciar">Iniciar</button>
+</div>
+<script src="flauta.js"></script>
+</body>
+</html>
