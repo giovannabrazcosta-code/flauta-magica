@@ -26,8 +26,8 @@
  *   - Pinos, tabela de LEDs, cores, tempos, ordem das animacoes e as
  *     combinacoes de sensores: vem DIRETO do binario.
  *   - Qual .wav corresponde a cada faixa do cartao SD do DFPlayer NAO esta
- *     no binario (so o numero da faixa). O mapeamento abaixo foi deduzido
- *     pela analogia com o FlautaVirtual.pde (melodicos, harmonicos, ritmicos).
+ *     no binario (so o numero da faixa). O mapeamento abaixo e uma
+ *     suposicao (melodicos, harmonicos, ritmicos).
  * =====================================================================
  */
 

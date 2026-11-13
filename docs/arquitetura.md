@@ -67,7 +67,6 @@ extraídas as pastas do usuário, e delas veio o código do servidor. O cartão 
 | Peça | O que se sabe | Estado |
 |---|---|---|
 | ESP32 | Cliente WebSocket para `10.0.0.118`, compilado com PlatformIO; sem strings de DFPlayer | Papel **em aberto** |
-| Flauta Virtual (Processing), que fica em outro repositório | 7 botões circulares que tocam 14 sons | Ligação com os 7 sensores **inferida**, não confirmada |
 
 ## 4. Parentesco entre as gerações — inferido
 
@@ -79,5 +78,4 @@ sugere que os programas têm a mesma origem. A ordem cronológica entre as gera�
 1. **Texto exato enviado pelo NodeMCU.** O servidor espera pares `bN:valor`. Se o NodeMCU enviasse apenas `off,off,…` (sem o
    prefixo `bN:`), o servidor guardaria o valor `undefined`. É preciso capturar uma mensagem real para confirmar.
 2. **Papel do ESP32.**
-3. **Ligação** entre os sensores do NodeMCU e os botões da Flauta Virtual.
-4. **Quem consome o estado** guardado no servidor (a tela ou o aplicativo que usaria os 7 valores), já que o servidor não o repassa.
+3. **Quem consome o estado** guardado no servidor (a tela ou o aplicativo que usaria os 7 valores), já que o servidor não o repassa.

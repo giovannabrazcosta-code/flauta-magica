@@ -50,8 +50,7 @@ O que se sabe vem só dos textos dentro do binário.
 ## Relação com o resto do sistema
 
 O servidor que recebe esses dados está em [`../raspberry-pi/`](../raspberry-pi/); o fluxo completo está em
-[`arquitetura.md`](arquitetura.md). Os 7 sensores do NodeMCU provavelmente correspondem aos 7 botões do programa
-Flauta Virtual, que fica em outro repositório (hipótese: ambos têm 7 itens, `b1`…`b7`; a ligação ainda não foi confirmada).
+[`arquitetura.md`](arquitetura.md).
 
 ## Cuidados
 
