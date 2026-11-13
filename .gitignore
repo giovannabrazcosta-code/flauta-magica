@@ -1,4 +1,4 @@
-# Sons: arquivos grandes (ver arduino-uno/data/LEIA-ME.md e flauta-virtual-processing/FlautaVirtual/data/LEIA-ME.md)
+# Sons: arquivos grandes (ver arduino/data/LEIA-ME.md)
 *.wav
 
 # Dumps brutos das placas e imagem do cartao SD do Raspberry Pi.

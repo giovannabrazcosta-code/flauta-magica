@@ -1,91 +1,71 @@
 # Flauta Mágica
 
-Documentação e código recuperado do kit **Flauta Mágica**: uma flauta com sensores que dispara sons e luzes. O kit passou
-por mais de uma geração de hardware (Arduino Uno; depois NodeMCU/ESP32 conversando por Wi-Fi com um Raspberry Pi).
+Código recuperado e reconstruído do kit **Flauta Mágica**: uma flauta com sensores que dispara sons e luzes.
 
-Este repositório reúne o que foi possível **recuperar e reconstruir**, junto com as simulações que permitem ver a lógica
-funcionando no computador.
+> **Leia isto primeiro:** os códigos-fonte dos firmwares das placas **não foram obtidos**. O que se tem é o programa já
+> compilado, lido das placas. A lógica foi **reconstruída** a partir dele, e os arquivos reconstruídos dizem isso no nome.
 
-## Por que existe código "reconstruído"
+## O que há aqui
 
-Os códigos-fonte dos firmwares (Arduino, NodeMCU, ESP32) **não foram obtidos**. O que havia nas placas era o programa já
-compilado, e o texto original (nomes, comentários) não existe nelas. A lógica foi recuperada lendo as placas e desmontando
-os binários. O único código-fonte em texto que se conseguiu foi o do servidor do Raspberry Pi (ver [Origem e créditos](#origem-e-créditos)).
+| Caminho | O que é | Natureza |
+|---|---|---|
+| `arduino/firmware-original.hex` | Leitura exata da flash da placa Arduino Uno da flauta | **Original** |
+| `arduino/FlautaMagica_reconstruido/` | A lógica do firmware reescrita em C++ (ainda não compilado) | Reconstrução |
+| `arduino/simulacao-javascript/` e `arduino/simulacao-java/` | A mesma lógica, para rodar no computador | Reconstrução |
+| `raspberry-pi/` | Servidor WebSocket em Node.js | Original, de terceiros (ver Créditos) |
+| `FlautaVirtual/` | Flauta Virtual (Processing): 7 botões que tocam sons | Original, origem a confirmar |
+| `docs/arquitetura.md` | Como as peças se conectam, com diagramas | |
+| `docs/nodemcu-e-esp32.md` | O que se sabe dos firmwares do NodeMCU e do ESP32 (sem código) | |
 
-## Visão geral
+## O que o firmware do Arduino faz
 
-```mermaid
-flowchart LR
-    subgraph UNO["Geração Arduino (sem rede)"]
-        direction LR
-        SA["4 sensores"] --> A["Arduino Uno"]
-        A --> LED["4 fitas de LED (grade 5×8)"]
-        A --> DFA["DFPlayer Mini + SD"]
-    end
-    subgraph REDE["Geração Wi-Fi (rede Team, sem internet)"]
-        direction LR
-        SB["7 sensores"] --> N["NodeMCU (ESP8266)"]
-        N -->|"WebSocket"| P["Raspberry Pi 10.0.0.118:8080"]
-        P -->|"estado b1…b7"| N
-    end
-```
-
-Detalhes, protocolo e pontos em aberto em [`docs/arquitetura.md`](docs/arquitetura.md).
-
-## Estrutura
-
-| Pasta | O que é |
-|---|---|
-| [`arduino-uno/`](arduino-uno/) | Firmware da flauta no Arduino (DFPlayer, 4 fitas de LED, 4 sensores): leitura bruta, análise, reconstrução em C++ e simulações em Java e JavaScript |
-| [`arduino-teste-imu-mpu9250/`](arduino-teste-imu-mpu9250/) | Outro firmware lido de uma placa Arduino: teste de um sensor inercial MPU9250 (não é da flauta) |
-| [`nodemcu-esp8266/`](nodemcu-esp8266/) | NodeMCU: cliente WebSocket que envia o estado de 7 sensores (só análise; sem código-fonte) |
-| [`esp32/`](esp32/) | ESP32: cliente WebSocket (só análise; sem código-fonte; papel a confirmar) |
-| [`raspberry-pi/`](raspberry-pi/) | Servidor WebSocket em Node.js que roda no Raspberry Pi |
-| [`flauta-virtual-processing/`](flauta-virtual-processing/) | Flauta Virtual: programa em Processing com 7 botões que tocam sons |
-| [`docs/`](docs/) | Arquitetura, registro das leituras das placas e rascunhos |
-
-## Código original × reconstrução
-
-| Item | Natureza |
-|---|---|
-| `arduino-uno/firmware-original/Copia.ino.hex` | **Exato**: leitura bruta da flash da placa |
-| `arduino-uno/reconstrucao-cpp/` | **Reconstrução** em C++ (ainda não compilado) |
-| `arduino-uno/simulacao-java/`, `simulacao-javascript/` | **Reconstrução** da mesma lógica, para rodar no computador |
-| `raspberry-pi/servidor-websocket/` | Código em texto, copiado como estava (de terceiros) |
-| `nodemcu-esp8266/`, `esp32/` | Apenas análise; os dumps brutos não são publicados |
-
-Nas reconstruções, vêm **do binário**: pinos, tabelas, cores, tempos, ordem das animações e combinações de sensores.
-São **escritos na reconstrução**: nomes de variáveis e funções e comentários. É **suposição**: qual `.wav` corresponde a cada
-faixa do cartão SD.
+Lê 4 sensores. A combinação escolhe a família de som (melódica, harmônica ou rítmica), toca a faixa no DFPlayer Mini e anima
+4 fitas de LED (grade de 5 × 8). A tabela completa está em [`docs/arquitetura.md`](docs/arquitetura.md).
 
 ## Como usar
 
 | Parte | Como |
 |---|---|
 | C++ do Arduino | Abrir o `.ino` no Arduino IDE (bibliotecas: Adafruit NeoPixel e DFRobotDFPlayerMini) |
-| Simulação em Java | Abrir o `.pde` no Processing 4 (biblioteca Sound); sons em `arduino-uno/data/` |
-| Simulação em JavaScript | Abrir `arduino-uno/simulacao-javascript/index.html` no Chrome ou Edge e clicar em "Iniciar" |
-| Servidor do Pi | `cd raspberry-pi/servidor-websocket/versao-cartao-sd && npm install && node index.js` |
-
-Os sons (`.wav`) **não estão no repositório**; cada pasta que precisa deles tem um `LEIA-ME.md` com a lista.
+| Simulação em Java | Abrir o `.pde` no Processing 4 (biblioteca Sound) |
+| Simulação em JavaScript | Abrir `arduino/simulacao-javascript/index.html` no Chrome ou Edge e clicar em "Iniciar" |
+| Flauta Virtual | Abrir `FlautaVirtual/FlautaVirtual.pde` no Processing 4 (biblioteca Sound) |
+| Servidor do Raspberry Pi | `cd raspberry-pi && npm install && node index.js` (ou `node servidor-somente-websocket.js`, que só precisa do pacote `websocket`) |
 
 > **Aviso:** não grave nenhum sketch nas placas originais. Cada upload sobrescreve a flash e destrói o que ela guarda.
 
+## Sons
+
+Os `.wav` **não estão no repositório**. A lista dos 14 arquivos usados está em [`arduino/data/LEIA-ME.md`](arduino/data/LEIA-ME.md).
+Para as simulações, coloque-os em `arduino/data/`; para a Flauta Virtual, coloque os mesmos em `FlautaVirtual/data/`.
+
+## Exato × suposição
+
+- **Vem do binário:** pinos, tabelas de LEDs, cores, tempos, ordem das animações, combinações de sensores e números das faixas.
+- **Escrito na reconstrução:** nomes de variáveis e funções e comentários.
+- **Suposição:** qual `.wav` corresponde a cada número de faixa do cartão SD (o firmware só guarda o número).
+- O `firmware-original.hex` tem SHA-256 `2F5EBFDD4D107DF75A0093644A626C1EEDBDCC003E9FE325B9BC473475E9C6DB`.
+- A simulação em JavaScript foi testada no navegador sem janela: a sequência de LEDs e de esperas de cada animação é idêntica à do `.ino`.
+  O som e o uso por clique e teclado não foram testados nesse ambiente.
+
+## O que ficou fora de propósito
+
+Os dumps brutos do NodeMCU e do ESP32, a imagem do cartão SD do Raspberry Pi e os sons. Os dumps têm senha de Wi-Fi e outros
+dados pessoais gravados dentro, e ficam guardados fora do repositório (ver `.gitignore`).
+
 ## Origem e créditos
 
-- **Servidor WebSocket (`raspberry-pi/`)** e **sons**: vêm do GitHub de **Christy386**. A versão só com WebSocket foi obtida
-  de lá por quem organizou este repositório, e o cartão SD do Raspberry Pi tinha um clone do repositório de sons
-  (`musicasFlautaMagica`) dessa mesma conta. A autoria original deve ser confirmada; **este repositório não reivindica a autoria
-  desse código**.
-- **Firmwares das placas:** a autoria **não foi confirmada**. Há indícios que apontam para a mesma pessoa (mensagens em
-  português em comum entre Arduino e NodeMCU, e o servidor), mas isso não é prova.
-- **Bibliotecas de terceiros:** TinyWebsockets (`gilmaimon`, WebSocket nos ESP), Adafruit NeoPixel, DFRobotDFPlayerMini,
-  e a biblioteca MPU9250 da Bolder Flight Systems (firmware de teste de IMU).
+- **Servidor do Raspberry Pi** e **sons**: vêm do GitHub de **Christy386**. A versão só com WebSocket
+  (`servidor-somente-websocket.js`) foi obtida de lá por quem organizou este repositório, e o cartão SD do Raspberry Pi tinha
+  um clone do repositório de sons dessa mesma conta. A autoria original deve ser confirmada; **este repositório não reivindica
+  a autoria desse código**.
+- **Firmwares das placas:** autoria **não confirmada**.
+- **Bibliotecas de terceiros:** TinyWebsockets (`gilmaimon`), Adafruit NeoPixel e DFRobotDFPlayerMini.
 
 ## Licença
 
-**Não definida.** O servidor e os sons são de terceiros e o repositório de origem pode ter (ou não) uma licença. Antes de
-publicar, confirme a licença do repositório de origem ou peça autorização, e então escolha a licença deste repositório.
+**Não definida.** O servidor e os sons são de terceiros. Antes de tornar o repositório público, confirme a licença do repositório
+de origem ou peça autorização.
 
 ## Em aberto
 
@@ -93,4 +73,3 @@ publicar, confirme a licença do repositório de origem ou peça autorização, 
 - Papel do ESP32 no kit.
 - Texto exato que o NodeMCU envia ao servidor (ver `docs/arquitetura.md`).
 - Se os 7 botões da Flauta Virtual correspondem aos 7 sensores do NodeMCU.
-- Cópia completa do cartão SD do Raspberry Pi (a atual tem 12,6%).

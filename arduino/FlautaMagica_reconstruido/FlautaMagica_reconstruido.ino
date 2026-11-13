@@ -2,7 +2,7 @@
  * =====================================================================
  *  FLAUTA MAGICA  -  codigo RECONSTRUIDO a partir do firmware da placa
  * =====================================================================
- *  Origem : dump da flash do Arduino (Copia.ino.hex, lido com AVRDUDESS)
+ *  Origem : dump da flash do Arduino (firmware-original.hex, lido com AVRDUDESS)
  *  Placa  : Arduino Uno / Nano (ATmega328P, 16 MHz, bootloader Optiboot)
  *
  *  O QUE ESTE CODIGO E

@@ -5,7 +5,7 @@
  *  Mesma logica da versao Java (FlautaMagicaJava.pde), que por sua vez
  *  e a reescrita do firmware do Arduino recuperado do dump da placa.
  *  NAO e o codigo-fonte original: nomes e comentarios foram escritos na
- *  reconstrucao. O firmware exato esta em 1_firmware_original_exato.
+ *  reconstrucao. O firmware exato esta em ../firmware-original.hex.
  *
  *  COMO USAR
  *   1) Abra index.html no navegador (Chrome ou Edge).

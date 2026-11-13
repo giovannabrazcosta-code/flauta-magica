@@ -24,7 +24,7 @@ flowchart LR
 | 0 1 1 1 | "volume +": só altera uma variável, não chega ao DFPlayer |
 
 Faixas do cartão SD: melódica `1,2,3,4,5,0` · harmônica `6,7,8,9,10,0` · rítmica `12,13,14,15,16,0`.
-Código: [`../arduino-uno/`](../arduino-uno/).
+Código: [`../arduino/`](../arduino/).
 
 ## 2. Geração Wi-Fi (NodeMCU + Raspberry Pi)
 
@@ -46,7 +46,7 @@ sequenceDiagram
 ```
 
 O NodeMCU tem também um DFPlayer Mini com cartão SD ligado.
-Código do servidor: [`../raspberry-pi/`](../raspberry-pi/). Análise do firmware: [`../nodemcu-esp8266/`](../nodemcu-esp8266/).
+Código do servidor: [`../raspberry-pi/`](../raspberry-pi/). Análise do firmware: [`nodemcu-e-esp32.md`](nodemcu-e-esp32.md).
 
 ### Como o servidor trata as mensagens — confirmada (lida no código)
 - Separa o texto por `,` e depois cada parte por `:`, e guarda o resultado em `b1`…`b7`.
@@ -57,13 +57,17 @@ Código do servidor: [`../raspberry-pi/`](../raspberry-pi/). Análise do firmwar
 A versão do servidor que está no cartão SD também tenta se conectar por `socket.io` a um servidor externo (Replit). Sem
 internet, essa conexão não funciona.
 
+### Cartão SD do Raspberry Pi — confirmada
+Foi feita uma cópia bruta do cartão (somente leitura), mas ela está **incompleta**: 2,0 GB dos 15,85 GB (12,6%). Da cópia foram
+extraídas as pastas do usuário, e delas veio o código do servidor. O cartão também tinha um clone do repositório de sons
+(`musicasFlautaMagica`) da conta Christy386 no GitHub, que não foi copiado para este repositório.
+
 ## 3. Outras peças
 
 | Peça | O que se sabe | Estado |
 |---|---|---|
 | ESP32 | Cliente WebSocket para `10.0.0.118`, compilado com PlatformIO; sem strings de DFPlayer | Papel **em aberto** |
 | Flauta Virtual (Processing) | 7 botões circulares que tocam 14 sons | Ligação com os 7 sensores **inferida**, não confirmada |
-| Arduino com MPU9250 | Programa de teste de IMU, sem relação com a flauta | Confirmada |
 
 ## 4. Parentesco entre as gerações — inferido
 
