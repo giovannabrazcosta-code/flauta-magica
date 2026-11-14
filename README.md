@@ -46,9 +46,4 @@ Para as simulações, coloque-os em `arduino/data/`.
 - A simulação em JavaScript foi testada no navegador sem janela: a sequência de LEDs e de esperas de cada animação é idêntica à do `.ino`.
   O som e o uso por clique e teclado não foram testados nesse ambiente.
 
-## O que ficou fora de propósito
-
-Os dumps brutos do NodeMCU e do ESP32, a imagem do cartão SD do Raspberry Pi e os sons. Os dumps têm senha de Wi-Fi e outros
-dados pessoais gravados dentro, e ficam guardados fora do repositório (ver `.gitignore`).
-
 
