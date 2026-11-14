@@ -51,24 +51,4 @@ Para as simulações, coloque-os em `arduino/data/`.
 Os dumps brutos do NodeMCU e do ESP32, a imagem do cartão SD do Raspberry Pi e os sons. Os dumps têm senha de Wi-Fi e outros
 dados pessoais gravados dentro, e ficam guardados fora do repositório (ver `.gitignore`).
 
-## Origem e créditos
 
-- **Servidor do Raspberry Pi** e **sons**: vêm do GitHub de **Christy386**. A versão só com WebSocket
-  (`servidor-somente-websocket.js`) foi obtida de lá por quem organizou este repositório, e o cartão SD do Raspberry Pi tinha
-  um clone do repositório de sons dessa mesma conta. A autoria original deve ser confirmada; **este repositório não reivindica
-  a autoria desse código**.
-- **Firmwares das placas:** autoria **não confirmada**.
-- **Bibliotecas de terceiros:** TinyWebsockets (`gilmaimon`), Adafruit NeoPixel e DFRobotDFPlayerMini.
-
-## Licença
-
-Este repositório **não define uma licença**, de propósito: ele reúne partes do mesmo projeto Flauta Mágica. Sem licença,
-vale o direito autoral padrão: o código pode ser lido, mas não reutilizado nem redistribuído sem autorização dos autores.
-
-O servidor do Raspberry Pi e os sons são de **Christy386**, e são usados aqui com a autorização dele.
-
-## Em aberto
-
-- Compilar o `.ino` reconstruído e comparar o tamanho com o dump original (~16 KB).
-- Papel do ESP32 no kit.
-- Texto exato que o NodeMCU envia ao servidor (ver `docs/arquitetura.md`).
